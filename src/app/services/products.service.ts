@@ -12,7 +12,7 @@ export class ProductsService {
 
   //paso
   getAllProducts(){
-    return this.http.get<Product[]>('https://fakestoreapi.com/products');   // paso 4  lo que devuelve que sea de tipo product(del modelo)
+    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products');   // paso 4  lo que devuelve que sea de tipo product(del modelo)
   }
 }
 

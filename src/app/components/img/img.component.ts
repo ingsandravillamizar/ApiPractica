@@ -12,7 +12,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   @Input('img')     // convertimos el input en un set   compararlo con @Input() titulo: string = 'My Store'; para poder identificar los cambios solo de esta imagen
   set changeImg(newImg: string){
     this.img = newImg;
-    console.log("Cambio la imagen =>", this.img ) //change just img
+    // console.log("Cambio la imagen =>", this.img ) //change just img
   }
 
 
@@ -21,9 +21,9 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   @Output() loaded = new EventEmitter<string>();
 
-  imageDefault = 'https://forestal.cafe/img/cafe/coffee.png'
-
-
+  // imageDefault = 'https://forestal.cafe/img/cafe/coffee.png'
+  imageDefault = 'https://fastly.picsum.photos/id/50/700/400.jpg?hmac=Cf-jmZWWzgW0DvpgJGNLmo42xNcK3r_0O3cJkdad3MM'
+  // imageDefault = 'https://scontent.fbaq2-2.fna.fbcdn.net/v/t39.30808-6/385315538_281981204716055_5411597766190141665_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=49d041&_nc_ohc=8qUF0lR2bgoAX9QgsXC&_nc_ht=scontent.fbaq2-2.fna&oh=00_AfAdaDskT-QbGUucZsDlVgIDkQewAh523SxfudJv1W_AkA&oe=652859C1'
   constructor() {
     //before render
     // No correr aqui nada asincrono    No async
@@ -65,12 +65,13 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgError(){
-      //console.log("Hubo un error al carga imagen,  cargo la imagen interna por defecto")
+      // console.log("Hubo un error al carga imagen,  cargo la imagen interna por defecto")
+
       this.img = this.imageDefault
   }
 
   imgLoaded(){
-    //console.log("cargo imagen correctamente:  comunicacion interna" )
+    console.log("cargo imagen correctamente:  comunicacion interna" )
     this.loaded.emit(this.img);  // trasmito la url para que el padre sepa cual se mostro
   }
 
