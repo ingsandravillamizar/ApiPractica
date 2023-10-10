@@ -8,11 +8,16 @@ import { Product } from './../models/product.model';   //paso 3
 })
 export class ProductsService {
 
+  private apiUrl = 'https://api.escuelajs.co/api/v1/products'
   constructor( private http: HttpClient) { }      //paso 2 inyectar
 
   //paso
   getAllProducts(){
-    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products');   // paso 4  lo que devuelve que sea de tipo product(del modelo)
+    return this.http.get<Product[]>(this.apiUrl);   // paso 4  lo que devuelve que sea de tipo product(del modelo)
+  }
+
+  getProduct(id:string){
+    return this.http.get<Product>(`${ this.apiUrl}/${id}`);
   }
 }
 

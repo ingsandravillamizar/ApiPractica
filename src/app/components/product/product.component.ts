@@ -23,21 +23,14 @@ export class ProductComponent implements OnInit {
   }
 
 
-
-
-
-
-
   @Output() agregarProducto = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   constructor(){}
 
-  ngOnInit(): void {
+  ngOnInit(): void {  }
 
-  }
+  onClickComprar(){ this.agregarProducto.emit(this.producto)}
 
-  onClickComprar(){
-    this.agregarProducto.emit(this.producto)
-
-  }
+  onShowDetail( ){this.showProduct.emit(this.producto.id) }
 }
