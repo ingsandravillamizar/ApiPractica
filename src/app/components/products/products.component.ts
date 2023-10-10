@@ -4,6 +4,8 @@ import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';   //paso 1 para api
 
 
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -18,7 +20,17 @@ export class ProductsComponent  implements OnInit {
   total = 0;
   products: Product[] = [];
   showProductDetail = false;
-
+  productChosen: Product = {
+    id   : '',
+    price: 0,
+    images : [],
+    title : '',
+    category: {
+      id:'',
+      name:'',
+    },
+    description: '',
+  };
 
   constructor( private _StoreService: StoreService ,
                private _ProductsService: ProductsService   )    //paso 2 para api  inyeccion de dependencia
@@ -49,7 +61,8 @@ export class ProductsComponent  implements OnInit {
   onShowDetail(id:string){
     this._ProductsService.getProduct(id)
     .subscribe(data =>{
-      console.log('producto',data)
+      this.toggleProductDetail();
+      this.productChosen = data;
     })
   }
 

@@ -9,6 +9,8 @@ import { Product } from './../models/product.model';   //paso 3
 export class ProductsService {
 
   private apiUrl = 'https://api.escuelajs.co/api/v1/products'
+
+
   constructor( private http: HttpClient) { }      //paso 2 inyectar
 
   //paso
