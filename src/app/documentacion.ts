@@ -15,3 +15,13 @@
 // @import 'swiper/scss/navigation';
 // @import 'swiper/scss/pagination';
 
+// <div class = "product-detail" [class.active]= "showProductDetail">
+//   <div *ngIf = "productChosen">
+//     <button  (click)="toggleProductDetail()" >Close</button>
+//         <h1>{{ productChosen.title }}</h1>
+//         <swiper [slidesPerView]="1">
+//           <ng-template swiperSlide *ngFor="let img of productChosen.images"> <img [src]= "img" alt = ""></ng-template>
+//         </swiper>
+//         <p> {{ productChosen.description }}</p>
+//   </div>
+// </div>
