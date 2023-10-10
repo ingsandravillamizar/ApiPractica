@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';   //paso 1
-import { Product } from './../models/product.model';   //paso 3
+import { CreateProductoDTO, Product } from './../models/product.model';   //paso 3
 
 
 @Injectable({
@@ -14,16 +14,19 @@ export class ProductsService {
   constructor( private http: HttpClient) { }      //paso 2 inyectar
 
   //paso
-  getAllProducts(){
+  getAll(){
     return this.http.get<Product[]>(this.apiUrl);   // paso 4  lo que devuelve que sea de tipo product(del modelo)
   }
 
-  getProduct(id:string){
+  get(id:string){
     return this.http.get<Product>(`${ this.apiUrl}/${id}`);
   }
+
+  create(dto: CreateProductoDTO){
+    return this.http.post<Product>(this.apiUrl,dto);
+  }
+
 }
-
-
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Product } from '../../models/product.model';
+import { Product , CreateProductoDTO} from '../../models/product.model';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';   //paso 1 para api
 
@@ -42,7 +42,7 @@ export class ProductsComponent  implements OnInit {
    // paso 3 para api,  debe ir aqui porque es algo asincrono
   ngOnInit(): void {
 
-     this._ProductsService.getAllProducts()
+     this._ProductsService.getAll()
     .subscribe(data => {
       this.products = data;
     })
@@ -59,11 +59,29 @@ export class ProductsComponent  implements OnInit {
   }
 
   onShowDetail(id:string){
-    this._ProductsService.getProduct(id)
+    this._ProductsService.get(id)
     .subscribe(data =>{
       this.toggleProductDetail();
       this.productChosen = data;
     })
+  }
+
+  createNewProduct(){
+   const product: CreateProductoDTO = {
+    title: 'Nuevo Producto',
+    description: 'bla bla bla',
+    images: ['https://placeimg.com/640/480/any?random=${Math.random()}'],
+    price: 1000,
+    categoryId: 2,
+   }
+   this._ProductsService.create(product)
+   .subscribe(data=> {
+      this.products.unshift(data);
+       console.log('producto creado', data);
+
+
+   })
+
   }
 
 
